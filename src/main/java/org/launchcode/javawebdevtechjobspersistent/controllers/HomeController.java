@@ -57,13 +57,14 @@ public class HomeController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
-//            model.addAttribute("errors",errors);
             return "add";
         }
 
         Optional<Employer> employerOptional = employerRepository.findById(employerId);
-        Employer employer = employerOptional.get();
-        newJob.setEmployer(employer);
+        if ( employerOptional.isPresent()){
+            Employer employer = employerOptional.get();
+              newJob.setEmployer(employer);
+        }
 
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);

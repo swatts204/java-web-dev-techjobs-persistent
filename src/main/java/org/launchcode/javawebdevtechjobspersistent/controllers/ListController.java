@@ -42,10 +42,10 @@ public class ListController {
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("all", "viewAll");
+//        model.addAttribute("all", "viewAll");
         model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
-        model.addAttribute("columns", columnChoices);
+//        model.addAttribute("columns", columnChoices);
 
         return "list";
     }
